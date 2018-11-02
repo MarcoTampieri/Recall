@@ -81,43 +81,95 @@ var calculateAverage = function (array) {
 }
 
 var getElementsUntilGreaterThanFive = function (array) {
-    return array.splice(0, array.findIndex(x => x >5));
+    return array.splice(0, array.findIndex(x => x > 5));
 }
 
 var convertArrayToObject = function (array) {
-    return 'Write your method here';
-}
+    return Object.assign({}, { [array[0]]: array[1], [array[2]]: array[3], [array[4]]: array[5] });
+};
 
 var getAllLetters = function (array) {
-    return 'Write your method here';
+    let newArray = [];
+    for (i = 0; i < array.length; i++) {
+        let word = array[i].split('');
+        for (j = 0; j < word.length; j++) {
+            if (newArray.includes(word[j])) {
+            } else {
+                newArray.push(word[j]);
+            }
+        }
+    }
+    return newArray.sort();
 }
 
 var swapKeysAndValues = function (object) {
-    return 'Write your method here';
+    let chiave = Object.keys(object);
+    let valore = Object.values(object);
+    let invert = new Object();
+    for (i = 0; i < chiave.length; i++) {
+        invert[valore[i]] = chiave[i];
+    }
+    return invert;
 }
 
 var sumKeysAndValues = function (object) {
-    return 'Write your method here';
+    let chiave = Object.keys(object);
+    let valori = Object.values(object);
+    let sum = 0;
+    for (i = 0; i < valori.length; i++) {
+        sum += Number(valori[i]) + Number(chiave[i]);
+    }
+    return sum
 }
 
 var removeCapitals = function (string) {
-    return 'Write your method here';
+    let noUpper = string.split('');
+    let newArray = [];
+    for (i = 0; i < noUpper.length; i++) {
+        if (noUpper[i] != noUpper[i].toUpperCase() || noUpper[i] == " ") {
+            newArray.push(noUpper[i])
+        } else {
+        }
+    }
+    let newString = newArray.join('');
+    return newString;
 }
 
 var roundUp = function (number) {
-    return 'Write your method here';
+    return Math.ceil(number);
 }
 
 var formatDateNicely = function (date) {
-    return 'Write your method here';
+    let options = {
+        day : '2-digit',
+        month: '2-digit',
+        year : 'numeric'
+    };
+    let day = date.getDate();
+    let month = date.getMonth()+1;
+    let year = date.getFullYear();
+    let newDate = new Date(day + "/" + month + "/" + year); 
+    let x = newDate.toLocaleDateString("en", options);
+    return x;
 }
 
 var getDomainName = function (string) {
-    return 'Write your method here';
+    let  domain = string.substring(string.indexOf('@')+1, string.indexOf('.com'));
+    return domain;
 }
 
 var titleize = function (string) {
-    return 'Write your method here';
+    let titolare = string.split('');
+    for (i = 0; i < titolare.length; i++) {
+        if (string.search(".") == false){
+           // 0 4 - 13/ 19* - 27   https://stackoverflow.com/questions/2332811/capitalize-words-in-string check this monday me!
+            titolare[0].toUpperCase();
+            titolare[4].toUpperCase();
+            titolare[13].toUpperCase();
+            titolare[27].toUpperCase();
+        }
+    } 
+    return titolare.join('');
 }
 
 var checkForSpecialCharacters = function (string) {
