@@ -19,7 +19,17 @@ var reverseWordsInArray = function (array) {
 }
 
 var everyPossiblePair = function (array) {
-    return 'Write your method here';
+    let b = [];
+    let c = [];
+    for (i = array.length - 1; i >= 1; i--) {
+        for (j = 0; j < array.length - 1; j++) {
+            let a = [];
+            if (array[j] !== array[i]) {
+                a.push(array[i], array[j]); b.push(a);
+            }
+        }
+    }
+    return b.map(x => x.sort());;
 }
 
 var allElementsExceptFirstThree = function (array) {
@@ -141,57 +151,68 @@ var roundUp = function (number) {
 
 var formatDateNicely = function (date) {
     let options = {
-        day : '2-digit',
+        day: '2-digit',
         month: '2-digit',
-        year : 'numeric'
+        year: 'numeric'
     };
     let day = date.getDate();
-    let month = date.getMonth()+1;
+    let month = date.getMonth() + 1;
     let year = date.getFullYear();
-    let newDate = new Date(day + "/" + month + "/" + year); 
+    let newDate = new Date(day + "/" + month + "/" + year);
     let x = newDate.toLocaleDateString("en", options);
-    return x;
+    return x; //date.toLocaleDateString()
 }
 
 var getDomainName = function (string) {
-    let  domain = string.substring(string.indexOf('@')+1, string.indexOf('.com'));
+    let domain = string.substring(string.indexOf('@') + 1, string.indexOf('.com'));
     return domain;
 }
 
 var titleize = function (string) {
-    let titolare = string.split('');
-    for (i = 0; i < titolare.length; i++) {
-        if (string.search(".") == false){
-           // 0 4 - 13/ 19* - 27   https://stackoverflow.com/questions/2332811/capitalize-words-in-string check this monday me!
-            titolare[0].toUpperCase();
-            titolare[4].toUpperCase();
-            titolare[13].toUpperCase();
-            titolare[27].toUpperCase();
-        }
-    } 
-    return titolare.join('');
+    return 'Write your answer here';
 }
 
 var checkForSpecialCharacters = function (string) {
-    return 'Write your method here';
+    return string.match(/\D\W/i) ? true : false;
 }
 
 var squareRoot = function (number) {
-    return 'Write your method here';
+    return Math.sqrt(number);
 }
 
 var factorial = function (number) {
-    return 'Write your method here';
+    let result = number;
+    if (number === 0 || number === 1) {
+        return 1
+    }
+    while (number > 1) {
+        number--;
+        result *= number;
+    }
+    return result;
 }
 
 var findAnagrams = function (string) {
-    return 'Write your method here';
+    if (string.length === 1) {
+        return string;
+    }
+    let permut = new Array;
+    for (let i = 0; i < string.length; i++) {
+        let s = string[0];
+        let _new = findAnagrams(string.slice(1, string.length));
+        for (let j = 0; j < _new.length; j++) {
+            permut.push(s + _new[j]);
+        }
+        string = string.substr(1, string.length - 1) + s;
+    }
+    return permut;
 }
 
 var convertToCelsius = function (number) {
-    return 'Write your method here';
+    return Math.round((number - 32) / (9 / 5));
 }
 
 var letterPosition = function (array) {
-    return 'Write your method here';
+    let alfabeto = "abcdefghijklmnopqrstuvwxyz".split('');
+    return array.map(x => alfabeto.indexOf(x.toLowerCase()) + 1);
 }
